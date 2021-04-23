@@ -21,6 +21,11 @@
 }
 .placeholder {
 }
+.button {
+}
+.primary_button {
+  color:#FFFFFF;
+}
 ._一级标题 {
   font-family:'Arial Normal', 'Arial';
   font-weight:bold;
@@ -74,6 +79,10 @@
 .line {
 }
 .arrow {
+}
+.text_area {
+  color:#000000;
+  text-align:left;
 }
 .table_cell {
 }
