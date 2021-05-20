@@ -81,8 +81,16 @@
 .arrow {
 }
 .text_area {
-  color:#000000;
+  font-size:20px;
+  color:#333333;
   text-align:left;
+}
+.i_textarea {
+  text-align:left;
+}
+.checkbox {
+  text-align:left;
+  line-height:28px;
 }
 .radio_button {
   text-align:left;
