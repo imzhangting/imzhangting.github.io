@@ -20,9 +20,14 @@ html, body {
 .app_wrapper {
   width: 100%;
   min-height: 100%;  
-  background: #c7c3bd url("../images/v3324_249.png") no-repeat -12px top;
+  /* background: #c7c3bd url("../images/bg.png") repeat, #c7c3bd url("../images/v3324_249.png") no-repeat -12px top; */
   /* background-size: 100% auto; */
   background-size: contain;
+  background-image: url("../images/v3324_249.png"), url("../images/bg.png");
+background-repeat: no-repeat, repeat;
+background-position: -12px top, 0 0;
+background-size: contain, auto;
+background-color: #c7c3bd;
 }
 .page-header {
   width: 100%;
