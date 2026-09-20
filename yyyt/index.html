@@ -48,33 +48,71 @@
                 <div class="form-item">
                     <div class="form-item-label"><span class="form-item-label__icon">*</span><span class="form-item-label__text">性别</span></div>
                     <div class="form-item-value">
-                        <div class="btn-group">
-                            <div class="btn is-active"><span class="btn__icon">♂</span><span class="btn__text">乾造 (男)</span>
-                            </div>
-                            <div class="btn"><span class="btn__icon">♀</span><span class="btn__text">坤造 (女)</span>
-                            </div>
+                        <div class="btn-group" role="group" aria-label="性别">
+                            <button type="button" class="btn is-active" aria-pressed="true"><span class="btn__icon">♂</span><span class="btn__text">乾造 (男)</span></button>
+                            <button type="button" class="btn" aria-pressed="false"><span class="btn__icon">♀</span><span class="btn__text">坤造 (女)</span></button>
                         </div>
                     </div>
                 </div>
                 <div class="form-item">
                     <div class="form-item-label"><span class="form-item-label__text">历法类型</span></div>
                     <div class="form-item-value">
-                        <div class="btn-group">
-                            <div class="btn is-active"><span class="btn__text">公历 (太阳历)</span>
-                            </div>
-                            <div class="btn"><span class="btn__text">农历 (阴阳历)</span>
-                            </div>
+                        <div class="btn-group" role="group" aria-label="历法类型">
+                            <button type="button" class="btn is-active" aria-pressed="true"><span class="btn__text">公历 (太阳历)</span></button>
+                            <button type="button" class="btn" aria-pressed="false"><span class="btn__text">农历 (阴阳历)</span></button>
                         </div>
                     </div>
                 </div>
                 <div class="form-item">
                     <div class="form-item-label"><span class="form-item-label__icon">*</span><span class="form-item-label__text">出生时间</span></div>
                     <div class="form-item-value">
-                        <div class="form-item-value__input-group">
-                            <input type="text" class="form-item-value__input" placeholder="请选择年" value="1990年" />
-                            <input type="text" class="form-item-value__input" placeholder="请选择月" value="01月" />
-                            <input type="text" class="form-item-value__input" placeholder="请选择日" value="01日" />
-                            <input type="text" class="form-item-value__input" placeholder="请选择时" value="辰时 07-09" />
+                        <div class="form-item-value__input-group" style="display: grid; grid-template-columns: 1.5fr 1fr 1fr 2fr; gap: 0.5rem;">
+                            <div class="custom-select">
+                                <input type="text" class="form-item-value__input" readonly placeholder="请选择年" value="1990年" />
+                                <ul class="custom-select__list" role="listbox">
+                                    <li class="custom-select__option is-active" role="option">1990年</li>
+                                    <li class="custom-select__option" role="option">1991年</li>
+                                    <li class="custom-select__option" role="option">1992年</li>
+                                    <li class="custom-select__option" role="option">1993年</li>
+                                    <li class="custom-select__option" role="option">1994年</li>
+                                    <li class="custom-select__option" role="option">1995年</li>
+                                    <li class="custom-select__option" role="option">1996年</li>
+                                    <li class="custom-select__option" role="option">1997年</li>
+                                </ul>
+                            </div>
+                            <div class="custom-select">
+                                <input type="text" class="form-item-value__input" readonly placeholder="请选择月" value="01月" />
+                                <ul class="custom-select__list" role="listbox">
+                                    <li class="custom-select__option is-active" role="option">01月</li>
+                                    <li class="custom-select__option" role="option">02月</li>
+                                    <li class="custom-select__option" role="option">03月</li>
+                                    <li class="custom-select__option" role="option">04月</li>
+                                    <li class="custom-select__option" role="option">05月</li>
+                                    <li class="custom-select__option" role="option">06月</li>
+                                </ul>
+                            </div>
+                            <div class="custom-select">
+                                <input type="text" class="form-item-value__input" readonly placeholder="请选择日" value="01日" />
+                                <ul class="custom-select__list" role="listbox">
+                                    <li class="custom-select__option is-active" role="option">01日</li>
+                                    <li class="custom-select__option" role="option">02日</li>
+                                    <li class="custom-select__option" role="option">03日</li>
+                                    <li class="custom-select__option" role="option">04日</li>
+                                    <li class="custom-select__option" role="option">05日</li>
+                                    <li class="custom-select__option" role="option">06日</li>
+                                </ul>
+                            </div>
+                            <div class="custom-select">
+                                <input type="text" class="form-item-value__input" readonly placeholder="请选择时" value="辰时 07-09" />
+                                <ul class="custom-select__list" role="listbox">
+                                    <li class="custom-select__option is-active" role="option">辰时 07-09</li>
+                                    <li class="custom-select__option" role="option">巳时 09-11</li>
+                                    <li class="custom-select__option" role="option">午时 11-13</li>
+                                    <li class="custom-select__option" role="option">未时 13-15</li>
+                                    <li class="custom-select__option" role="option">申时 15-17</li>
+                                    <li class="custom-select__option" role="option">酉时 17-19</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -96,6 +134,67 @@
             <div class="page-body-link"><span class="page-body-link-text">“命由天定，运由己造。观星揽月，知命立身。”</span></div>
         </div>
     </div>
+    <script>
+      document.querySelectorAll(".btn-group").forEach(function (group) {
+        group.addEventListener("click", function (event) {
+          var btn = event.target.closest(".btn");
+          if (!btn || !group.contains(btn) || btn.classList.contains("is-active")) {
+            return;
+          }
+          group.querySelectorAll(".btn").forEach(function (item) {
+            var active = item === btn;
+            item.classList.toggle("is-active", active);
+            item.setAttribute("aria-pressed", active ? "true" : "false");
+          });
+        });
+      });
+
+      function closeCustomSelects(except) {
+        document.querySelectorAll(".custom-select.is-open").forEach(function (el) {
+          if (el !== except) {
+            el.classList.remove("is-open");
+          }
+        });
+      }
+
+      document.querySelectorAll(".custom-select").forEach(function (wrap) {
+        var input = wrap.querySelector(".form-item-value__input");
+        var list = wrap.querySelector(".custom-select__list");
+        if (!input || !list) {
+          return;
+        }
+
+        input.addEventListener("click", function (event) {
+          event.stopPropagation();
+          var willOpen = !wrap.classList.contains("is-open");
+          closeCustomSelects();
+          wrap.classList.toggle("is-open", willOpen);
+        });
+
+        list.addEventListener("click", function (event) {
+          event.stopPropagation();
+          var option = event.target.closest(".custom-select__option");
+          if (!option) {
+            return;
+          }
+          list.querySelectorAll(".custom-select__option").forEach(function (item) {
+            item.classList.toggle("is-active", item === option);
+          });
+          input.value = option.textContent.trim();
+          wrap.classList.remove("is-open");
+        });
+      });
+
+      document.addEventListener("click", function () {
+        closeCustomSelects();
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          closeCustomSelects();
+        }
+      });
+    </script>
 </body>
 
 </html>

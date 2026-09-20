@@ -123,7 +123,7 @@ html, body {
   background-color: #EEF7E9;
   border-color: 1px solid #C9E0D1;
   box-shadow: 0px 12px 32px rgba(0.30588236451148987, 0.43529412150382996, 0.3529411852359772, 0.0784313753247261);
-  overflow: hidden;
+  overflow: visible;
 }
 @media (min-width: 768px) {
   .form_warpper {
@@ -160,13 +160,17 @@ html, body {
 }
 .form-item-value__input {
   width: 100%;
-  /* height: 2.75rem; */
-  background: #EEF7E9;
-  padding: 0.5rem 0.5rem;
-  line-height: 1;
-  border: 1px solid #B7D9C7;
+  height: 2.25rem;
+  min-height: 2.25rem;
+  background-color: #EEF7E9;
+  padding: 0 0.5rem;
+  line-height: 2.25rem;
+  border: 0;
   border-radius: 4px;
+  box-shadow: inset 0 0 0 1px #B7D9C7;
   overflow: hidden;
+  appearance: none;
+  -webkit-appearance: none;
 
   color: #4E6F5A;
   font-family: Noto Serif SC;
@@ -183,13 +187,66 @@ html, body {
 }
 .form-item-value__input:focus {
   outline: none;
-  background: #F0FAF0;
-  border-color: #B7D9C7;
+  background-color: #F0FAF0;
+  box-shadow: inset 0 0 0 1px #B7D9C7;
 }
 .form-item-value__input-group {
   display: flex;
   flex-direction: row;
   gap: 0.5rem;
+  overflow: visible;
+}
+.custom-select {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+.custom-select .form-item-value__input {
+  cursor: pointer;
+  caret-color: transparent;
+  user-select: none;
+}
+.custom-select.is-open .form-item-value__input {
+  background-color: #F0FAF0;
+}
+.custom-select__list {
+  display: none;
+  position: absolute;
+  z-index: 20;
+  left: 0;
+  right: 0;
+  top: calc(100% + 4px);
+  max-height: 11.25rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0.25rem;
+  list-style: none;
+  background-color: #EEF7E9;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 1px #B7D9C7, 0 8px 16px rgba(78, 111, 90, 0.12);
+}
+.custom-select.is-open .custom-select__list {
+  display: block;
+}
+.custom-select__option {
+  height: 2.25rem;
+  padding: 0 0.5rem;
+  line-height: 2.25rem;
+  color: #4E6F5A;
+  font-family: Noto Serif SC;
+  font-weight: 400;
+  font-size: 0.875rem;
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.custom-select__option:hover,
+.custom-select__option.is-active {
+  background-color: #B7D9C7;
 }
 
 .btn-group {
@@ -199,21 +256,37 @@ html, body {
 }
 .btn-group .btn {
   flex: 1;
+  margin: 0;
+  border: 0;
   border-radius: 4px;
   background: #EEF7E9;
-  border: 1px solid #C9E0D1;
+  box-shadow: inset 0 0 0 1px #C9E0D1;
   padding: 0.5rem 0.5rem;
   color: #7F9A88;
   font-family: Noto Serif SC;
   font-weight: 300;
   font-size: 0.875rem;
+  line-height: 1.2;
   text-align: center;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+.btn-group .btn:hover {
+  color: #4E6F5A;
+  box-shadow: inset 0 0 0 1px #7F9A88;
+  background: #F0FAF0;
+}
+.btn-group .btn:focus-visible {
+  outline: 2px solid #4E6F5A;
+  outline-offset: 2px;
 }
 .btn-group .btn.is-active {
   color: #4E6F5A;  
   font-weight: 700;
-  border-color: #4E6F5A;
-  border-width: 1.5px;
+  box-shadow: inset 0 0 0 1.5px #4E6F5A;
+  background: #F0FAF0;
 }
 
 .btn-group .btn .btn__icon {
