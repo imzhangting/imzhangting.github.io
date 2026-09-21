@@ -22,6 +22,7 @@ html, body {
   min-height: 100%;  
   background: #c7c3bd url("../images/v3324_249.png") no-repeat -12px top;
   background-size: contain;
+}
 .page-header {
   width: 100%;
   display: grid;
@@ -169,8 +170,9 @@ html, body {
   border-radius: 4px;
   box-shadow: inset 0 0 0 1px #B7D9C7;
   overflow: hidden;
-  appearance: none;
   -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 
   color: #4E6F5A;
   font-family: Noto Serif SC;
@@ -204,6 +206,8 @@ html, body {
 .custom-select .form-item-value__input {
   cursor: pointer;
   caret-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
   user-select: none;
 }
 .custom-select.is-open .form-item-value__input {
@@ -244,9 +248,13 @@ html, body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.custom-select__option:hover,
 .custom-select__option.is-active {
   background-color: #B7D9C7;
+}
+@media (hover: hover) {
+  .custom-select__option:hover {
+    background-color: #B7D9C7;
+  }
 }
 
 .btn-group {
@@ -339,5 +347,4 @@ html, body {
   font-family: Noto Serif SC;
   font-weight: 400;
   font-size: 0.875rem;
-}
 }

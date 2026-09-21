@@ -68,7 +68,7 @@
                     <div class="form-item-value">
                         <div class="form-item-value__input-group" style="display: grid; grid-template-columns: 1.5fr 1fr 1fr 2fr; gap: 0.5rem;">
                             <div class="custom-select">
-                                <input type="text" class="form-item-value__input" readonly placeholder="请选择年" value="1990年" />
+                                <input type="text" class="form-item-value__input" readonly inputmode="none" autocomplete="off" placeholder="请选择年" value="1990年" />
                                 <ul class="custom-select__list" role="listbox">
                                     <li class="custom-select__option is-active" role="option">1990年</li>
                                     <li class="custom-select__option" role="option">1991年</li>
@@ -81,7 +81,7 @@
                                 </ul>
                             </div>
                             <div class="custom-select">
-                                <input type="text" class="form-item-value__input" readonly placeholder="请选择月" value="01月" />
+                                <input type="text" class="form-item-value__input" readonly inputmode="none" autocomplete="off" placeholder="请选择月" value="01月" />
                                 <ul class="custom-select__list" role="listbox">
                                     <li class="custom-select__option is-active" role="option">01月</li>
                                     <li class="custom-select__option" role="option">02月</li>
@@ -92,7 +92,7 @@
                                 </ul>
                             </div>
                             <div class="custom-select">
-                                <input type="text" class="form-item-value__input" readonly placeholder="请选择日" value="01日" />
+                                <input type="text" class="form-item-value__input" readonly inputmode="none" autocomplete="off" placeholder="请选择日" value="01日" />
                                 <ul class="custom-select__list" role="listbox">
                                     <li class="custom-select__option is-active" role="option">01日</li>
                                     <li class="custom-select__option" role="option">02日</li>
@@ -103,7 +103,7 @@
                                 </ul>
                             </div>
                             <div class="custom-select">
-                                <input type="text" class="form-item-value__input" readonly placeholder="请选择时" value="辰时 07-09" />
+                                <input type="text" class="form-item-value__input" readonly inputmode="none" autocomplete="off" placeholder="请选择时" value="辰时 07-09" />
                                 <ul class="custom-select__list" role="listbox">
                                     <li class="custom-select__option is-active" role="option">辰时 07-09</li>
                                     <li class="custom-select__option" role="option">巳时 09-11</li>
@@ -164,11 +164,26 @@
           return;
         }
 
-        input.addEventListener("click", function (event) {
+        function toggleOpen(event) {
+          event.preventDefault();
           event.stopPropagation();
           var willOpen = !wrap.classList.contains("is-open");
           closeCustomSelects();
           wrap.classList.toggle("is-open", willOpen);
+          if (document.activeElement === input) {
+            input.blur();
+          }
+        }
+
+        input.addEventListener("mousedown", function (event) {
+          event.preventDefault();
+        });
+
+        wrap.addEventListener("click", function (event) {
+          if (event.target.closest(".custom-select__list")) {
+            return;
+          }
+          toggleOpen(event);
         });
 
         list.addEventListener("click", function (event) {
